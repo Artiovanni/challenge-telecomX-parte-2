@@ -30,7 +30,6 @@ Neste projeto, atuamos como Analista de Machine Learning Júnior na Telecom X. O
 │   ├── feature_importance_lr.png
 │   ├── feature_importance_rf.png
 │   ├── rf_depth.png
-└── requirements.txt                     # Lista de dependências do projeto
 ```
 
 Os dados tratados são carregados automaticamente via URL no notebook, não sendo necessário manter o arquivo CSV localmente.
