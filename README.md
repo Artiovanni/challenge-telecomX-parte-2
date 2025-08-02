@@ -16,14 +16,37 @@ Neste projeto, atuamos como Analista de Machine Learning Júnior na Telecom X. O
 
 ---
 
+## 📁 Estrutura do Projeto
+
+```
+├── Challenge_TelecomX_(Parte_2).ipynb   # Notebook principal com todo o pipeline
+├── imagens_telecomX_2/                  # Pasta com visualizações e gráficos gerados
+│   ├── distribuicao_evasao.png
+│   ├── matriz_corr.png
+│   ├── boxplot_tenure_churn.png
+│   ├── boxplot_total_gasto_churn.png
+│   ├── matriz_confusao_lr.png
+│   ├── matriz_confusao_rf.png
+│   ├── feature_importance_lr.png
+│   ├── feature_importance_rf.png
+│   ├── rf_depth.png
+└── requirements.txt                     # Lista de dependências do projeto
+```
+
+Os dados tratados são carregados automaticamente via URL no notebook, não sendo necessário manter o arquivo CSV localmente.
+
+---
+
 ## 🛠️ Etapas do Projeto
 
 ### 1. Preparação dos Dados
 
-- **Remoção de colunas irrelevantes:** Exclusão do identificador único (`customerID`)
-- **Encoding:** Aplicação de OneHotEncoder para variáveis categóricas
-- **Normalização:** Uso de StandardScaler para modelos sensíveis à escala
-- **Balanceamento:** Aplicação de SMOTE para equilibrar as classes (churn ≈ 26%)
+- **Classificação das variáveis:** As variáveis foram separadas em categóricas (ex: tipo de contrato, método de pagamento) e numéricas (ex: tenure, Charges_Total).
+- **Remoção de colunas irrelevantes:** Exclusão do identificador único (`customerID`).
+- **Encoding:** Aplicação de OneHotEncoder para variáveis categóricas, convertendo-as em variáveis binárias.
+- **Normalização:** Uso de StandardScaler para variáveis numéricas, fundamental para modelos sensíveis à escala como a Regressão Logística.
+- **Balanceamento:** Aplicação de SMOTE para equilibrar as classes (churn ≈ 26%), evitando viés para a classe majoritária.
+- **Separação dos dados:** Divisão em treino (70%) e teste (30%) com estratificação para manter a proporção de churn.
 
 ---
 
@@ -66,13 +89,7 @@ Neste projeto, atuamos como Analista de Machine Learning Júnior na Telecom X. O
 
 ---
 
-### 3. Separação dos Dados
-
-- Divisão em treino (70%) e teste (30%) com estratificação para manter a proporção de churn
-
----
-
-### 4. Modelagem Preditiva
+### 3. Modelagem Preditiva
 
 Foram treinados dois modelos principais:
 
@@ -81,9 +98,13 @@ Foram treinados dois modelos principais:
 | Regressão Logística   | ✅ Sim       | ✅ Sim            | Linear, baseline    |
 | Random Forest         | ❌ Não       | ❌ Não            | Baseado em árvore   |
 
+**Justificativas:**
+- **Regressão Logística:** Modelo linear, rápido e interpretável, ideal como baseline e para entender o impacto de cada variável.
+- **Random Forest:** Modelo robusto, capaz de capturar relações não-lineares e menos sensível a outliers e escala, além de fornecer métricas de importância das variáveis.
+
 ---
 
-### 5. Avaliação dos Modelos
+### 4. Avaliação dos Modelos
 
 #### **Matrizes de Confusão**
 
@@ -97,7 +118,7 @@ Foram treinados dois modelos principais:
 
 ---
 
-### 6. Importância das Variáveis
+### 5. Importância das Variáveis
 
 #### **Regressão Logística**
 
@@ -113,7 +134,7 @@ Foram treinados dois modelos principais:
 
 ---
 
-### 7. Otimização do Random Forest
+### 6. Otimização do Random Forest
 
 ![Desempenho por Profundidade - Random Forest](imagens_telecomX_2/rf_depth.png)
 
@@ -127,6 +148,7 @@ A análise e modelagem preditiva permitiram identificar padrões claros de evas�
 
 - **Regressão Logística** destacou-se pelo alto recall, sendo eficiente para identificar a maioria dos clientes que realmente irão cancelar. É o modelo mais indicado quando o objetivo é não deixar clientes em risco passarem despercebidos, mesmo que isso gere alguns falsos positivos.
 - **Random Forest** apresentou maior precisão, tornando-se uma escolha interessante quando se deseja priorizar abordagens mais certeiras, reduzindo o número de clientes abordados erroneamente.
+
 ### 🔑 Principais fatores associados ao churn:
 
 - ⏳ **Tempo de contrato baixo:** Clientes com pouco tempo de serviço são mais propensos a cancelar.
@@ -167,16 +189,15 @@ Esses resultados reforçam a importância de estratégias de retenção focadas 
    ```
 3. Execute o notebook `Challenge_TelecomX_(Parte_2).ipynb` em Jupyter, Colab ou VSCode.
 
-Os dados são carregados automaticamente via URL no notebook.
+Os dados tratados são carregados automaticamente via URL no notebook, não sendo necessário download manual.
 
 ---
 
 ## ✍️ Autor
 
-Projeto desenvolvido por [Seu Nome] como parte do desafio de análise preditiva de churn no setor de telecomunicações.
+Projeto desenvolvido por Arthur Giovanni como parte do desafio de análise preditiva de churn no setor de telecomunicações.
 
 ---
 
 ## 📝 Licença
-
-Projeto para
+Para fins de prática e estudo.
